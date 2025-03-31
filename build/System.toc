@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}文档目的}{2}{section.1}%
+\contentsline {section}{\numberline {2}系统组概述}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}系统组定位}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}系统组主要职责}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}系统组用例总览}{2}{section.3}%
+\contentsline {section}{\numberline {4}详细用例说明}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}构建部署流程}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}集成第三方服务(如果其他组需要)}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}协同开发数据库}{5}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}API设计与实现}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}性能优化}{7}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}安全保障}{8}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}监控与日志系统}{9}{subsection.4.7}%
+\contentsline {section}{\numberline {5}总结}{9}{section.5}%
+\contentsline {section}{\numberline {6}附录}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}用例关系说明}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}文档修订历史}{10}{subsection.6.2}%
