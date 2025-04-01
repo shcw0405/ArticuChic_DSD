@@ -1,6 +1,6 @@
 ## 📖 About the Project
 
-This project is for DSD, 2025 Spring. We are aiming to design an intelligent **Treasure Exploration System** with users from multiple platforms. More information is coming soon after further discussion.
+This project is for DSD, 2025 Spring. We are aiming to design an intelligent **Lower Limb Recovery Status Monitoring System** with users from multiple platforms. More information is coming soon after further discussion.
 
 We are the **Android group**.
 
