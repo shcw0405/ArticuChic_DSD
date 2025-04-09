@@ -1,0 +1,573 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,calc}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={System Technical Roadmap},
+    pdfpagemode=FullScreen,
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    xleftmargin=15pt,
+    xrightmargin=15pt,
+    backgroundcolor=\color{gray!10}
+}
+
+\title{System Technical Roadmap}
+\author{ArticuChic Team}
+\date{\today}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{System Technical Roadmap}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{Project Documentation}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Document Overview}
+
+\subsection{Document Purpose}
+
+This document details the technical roadmap choices for each component of the system, including the UI Group, System Group, Data Group, and Analysis Group. The document aims to provide clear technical guidance for the development team, ensuring technical compatibility and collaboration efficiency between groups.
+
+\subsection{Project Background}
+
+This project is a comprehensive system with four main components working together: User Interface Group (UI), System Group, Data Group, and Analysis Group. The system allows users to access services through web pages, perform Bluetooth connections, data collection, page access, and login functions. The collected data is sent to the server via the network, where the server collects and stores the data, and simultaneously calls the Analysis Group's Java code for streaming analysis. The analysis results are stored and returned to the client for display.
+
+\subsection{Target Audience}
+
+This document is intended for the following readers:
+\begin{itemize}
+  \item Project managers: To understand the project's technical architecture and roadmap
+  \item Development team members: To understand the technical choices and implementation details of each group
+  \item Testers: To understand the system's technical architecture and develop testing strategies
+  \item Operations personnel: To understand system deployment and maintenance requirements
+\end{itemize}
+
+\section{System Architecture Overview}
+
+The system adopts a layered architecture, mainly divided into frontend layer, service layer, data layer, and analysis layer. The responsibilities of each group are as follows:
+
+\begin{itemize}
+  \item \textbf{UI Group}: Responsible for user interface design and implementation, providing user interaction functionality
+  \item \textbf{System Group}: Responsible for system core architecture, API implementation, third-party service integration, system deployment, performance optimization, security assurance, and monitoring systems
+  \item \textbf{Data Group}: Responsible for data model design, database implementation, data processing workflows, and data quality assurance
+  \item \textbf{Analysis Group}: Responsible for data analysis algorithms, report generation, data visualization, and decision support models
+\end{itemize}
+
+The system data flow is as follows:
+\begin{enumerate}
+  \item Users access the system through web pages
+  \item Web pages perform Bluetooth connection and data collection
+  \item Collected data is sent to the server via the network
+  \item The server collects and stores the data
+  \item The server calls the Analysis Group's Java code for streaming analysis
+  \item Analysis results are stored and returned to the client
+  \item The frontend renders the display data provided by the Analysis Group
+\end{enumerate}
+
+\section{UI Group Technical Roadmap}
+
+\subsection{Frontend Technology Stack}
+
+\begin{itemize}
+  \item \textbf{Core Languages}:
+    \begin{itemize}
+      \item HTML5: Page structure
+      \item CSS3: Page styling
+      \item JavaScript: Interaction logic
+    \end{itemize}
+  
+  \item \textbf{Frontend Frameworks}:
+    \begin{itemize}
+      \item Vue.js/React: Building user interfaces
+      \item Bootstrap/Tailwind CSS: Responsive layout and UI components
+    \end{itemize}
+  
+  \item \textbf{Web Bluetooth API}:
+    \begin{itemize}
+      \item Web Bluetooth API: Implementing browser connection with Bluetooth devices (official demo)
+    \end{itemize}
+  
+  \item \textbf{Data Visualization}:
+    \begin{itemize}
+      \item Chart.js/D3.js: Charts and visualization
+      \item ECharts: Complex data visualization
+    \end{itemize}
+  
+  \item \textbf{State Management}:
+    \begin{itemize}
+      \item Vuex/Redux: Frontend state management
+    \end{itemize}
+  
+  \item \textbf{Build Tools}:
+    \begin{itemize}
+      \item Webpack/Vite: Module bundling and development server
+      \item Babel: JavaScript transpilation
+    \end{itemize}
+\end{itemize}
+
+\subsection{Frontend Functionality Implementation}
+
+\begin{enumerate}
+  \item \textbf{User Authentication}:
+    \begin{itemize}
+      \item JWT (JSON Web Token) authentication
+      \item OAuth 2.0 (if third-party login is needed)
+    \end{itemize}
+  
+  \item \textbf{Bluetooth Connection}:
+    \begin{itemize}
+      \item Using Web Bluetooth API to implement device discovery and connection
+      \item Implementing data collection and transmission
+    \end{itemize}
+  
+  \item \textbf{Data Collection}:
+    \begin{itemize}
+      \item Real-time data collection and transmission
+      \item Data caching and resumable transmission
+    \end{itemize}
+  
+  \item \textbf{Data Display}:
+    \begin{itemize}
+      \item Real-time data visualization
+      \item Historical data query and display
+      \item Analysis results display
+    \end{itemize}
+  
+  \item \textbf{Responsive Design}:
+    \begin{itemize}
+      \item Adapting to different devices (desktop, tablet, mobile)
+      \item Supporting different screen sizes
+    \end{itemize}
+\end{enumerate}
+
+\section{System Group Technical Roadmap}
+
+\subsection{Backend Technology Stack}
+
+\begin{itemize}
+  \item \textbf{Core Language}:
+    \begin{itemize}
+      \item Java: Main backend language
+    \end{itemize}
+  
+  \item \textbf{Web Frameworks}:
+    \begin{itemize}
+      \item Spring Boot: Rapid development of web applications
+      \item Spring MVC: Handling web requests
+    \end{itemize}
+  
+  \item \textbf{API Design}:
+    \begin{itemize}
+      \item RESTful API: Following REST architecture style
+      \item OpenAPI/Swagger: API documentation and testing
+    \end{itemize}
+  
+  \item \textbf{Security Framework (Optional)}:
+    \begin{itemize}
+      \item Spring Security: Authentication and authorization
+      \item JWT: Stateless authentication
+    \end{itemize}
+  
+  \item \textbf{Message Queues}:
+    \begin{itemize}
+      \item Apache Kafka: Streaming data processing
+      \item RabbitMQ: Message passing
+    \end{itemize}
+  
+  \item \textbf{Caching}:
+    \begin{itemize}
+      \item Redis: High-performance caching
+    \end{itemize}
+  
+  \item \textbf{Monitoring and Logging}:
+    \begin{itemize}
+      \item ELK Stack: Log collection and analysis
+      \item Prometheus + Grafana: System monitoring
+    \end{itemize}
+  
+  \item \textbf{Deployment and Containerization}:
+    \begin{itemize}
+      \item Docker: Containerizing applications
+      \item Kubernetes: Container orchestration
+      \item Jenkins/GitLab CI: Continuous integration/deployment
+    \end{itemize}
+\end{itemize}
+
+\subsection{System Functionality Implementation}
+
+\begin{enumerate}
+  \item \textbf{API Services}:
+    \begin{itemize}
+      \item Providing RESTful API interfaces
+      \item Implementing API version control
+      \item Providing API documentation and testing tools
+    \end{itemize}
+  
+  \item \textbf{Data Reception and Processing}:
+    \begin{itemize}
+      \item Receiving data sent from the frontend
+      \item Forwarding data to Data Group and Analysis Group services
+    \end{itemize}
+  
+  \item \textbf{Third-party Service Integration}:
+    \begin{itemize}
+      \item Evaluating and selecting third-party services
+      \item Implementing API encapsulation
+      \item Providing unified interfaces
+    \end{itemize}
+  
+  \item \textbf{System Deployment}:
+    \begin{itemize}
+      \item Designing CI/CD workflows
+      \item Configuring automated build and testing
+    \end{itemize}
+  
+  \item \textbf{Security Assurance}:
+    \begin{itemize}
+      \item Identity authentication and authorization
+      \item Data encryption
+      \item Security auditing and monitoring
+    \end{itemize}
+  
+  \item \textbf{Monitoring and Logging}:
+    \begin{itemize}
+      \item System monitoring metrics design
+      \item Log collection and analysis
+      \item Alert mechanism implementation
+    \end{itemize}
+\end{enumerate}
+
+\section{Data Group Technical Roadmap}
+
+\subsection{Database Technology Stack}
+
+\begin{itemize}
+  \item \textbf{Core Database Engine}:
+    \begin{itemize}
+      \item MySQL Community Server 8.0.x: Main relational database
+    \end{itemize}
+  
+  \item \textbf{Database Interaction Layer}:
+    \begin{itemize}
+      \item JDBC (Java Database Connectivity): Database connection
+      \item MySQL Connector/J: MySQL JDBC driver
+      \item HikariCP: High-performance connection pool (optional)
+    \end{itemize}
+  
+  \item \textbf{Database Migration Tools}:
+    \begin{itemize}
+      \item Flyway: Database version control
+    \end{itemize}
+  
+  \item \textbf{Data Processing Tools}:
+    \begin{itemize}
+      \item Apache Commons DbUtils: Simplifying JDBC operations
+      \item Spring JDBC (JdbcTemplate): Simplifying database operations
+    \end{itemize}
+  
+  \item \textbf{Backup and Recovery}:
+    \begin{itemize}
+      \item mysqldump: Database backup
+      \item Binary logs: Incremental backup
+    \end{itemize}
+\end{itemize}
+
+\subsection{Data Functionality Implementation}
+
+\begin{enumerate}
+  \item \textbf{Data Model Design}:
+    \begin{itemize}
+      \item Designing database table structures
+      \item Defining field types and constraints
+      \item Designing indexes and relationships
+    \end{itemize}
+  
+  \item \textbf{Data Access Layer Implementation}:
+    \begin{itemize}
+      \item Using JDBC to implement data access
+      \item Implementing connection pool management
+      \item Implementing transaction management
+    \end{itemize}
+  
+  \item \textbf{Data Quality Assurance} (Optional):
+    \begin{itemize}
+      \item Data integrity checking
+      \item Data consistency maintenance
+      \item Data backup and recovery
+    \end{itemize}
+  
+  \item \textbf{Database Optimization}:
+    \begin{itemize}
+      \item Query optimization
+      \item Index optimization
+      \item Table structure optimization
+    \end{itemize}
+  
+  \item \textbf{Data Security}:
+    \begin{itemize}
+      \item Data encryption
+      \item Access control
+      \item Audit logging
+    \end{itemize}
+\end{enumerate}
+
+\section{Analysis Group Technical Roadmap}
+
+\subsection{Analysis Technology Stack}
+
+\begin{itemize}
+  \item \textbf{Core Language}:
+    \begin{itemize}
+      \item Java: Main analysis language
+    \end{itemize}
+  
+  \item \textbf{Data Processing Frameworks}:
+    \begin{itemize}
+      \item Apache Spark: Large-scale data processing
+      \item Apache Flink: Streaming data processing
+    \end{itemize}
+  
+  \item \textbf{Machine Learning Libraries}:
+    \begin{itemize}
+      \item Weka: Machine learning algorithms
+      \item DL4J (Deep Learning for Java): Deep learning
+    \end{itemize}
+  
+  \item \textbf{Statistical Analysis Libraries}:
+    \begin{itemize}
+      \item Apache Commons Math: Mathematical and statistical calculations
+      \item JFreeChart: Chart generation
+    \end{itemize}
+  
+  \item \textbf{Data Visualization}:
+    \begin{itemize}
+      \item JFreeChart: Java chart library
+      \item XChart: Simple chart library
+    \end{itemize}
+  
+  \item \textbf{API Integration}:
+    \begin{itemize}
+      \item Spring Boot: Providing analysis service API
+      \item RESTful API: Interacting with System Group
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analysis Functionality Implementation}
+
+\begin{enumerate}
+  \item \textbf{Data Analysis Algorithms}:
+    \begin{itemize}
+      \item Implementing data preprocessing algorithms
+      \item Implementing feature extraction algorithms
+      \item Implementing classification and regression algorithms
+      \item Implementing clustering algorithms
+    \end{itemize}
+  
+  \item \textbf{Streaming Data Processing}:
+    \begin{itemize}
+      \item Real-time data reception and processing
+      \item Streaming analysis algorithm implementation
+      \item Real-time result generation and transmission
+    \end{itemize}
+  
+  \item \textbf{Report Generation}:
+    \begin{itemize}
+      \item Designing report templates
+      \item Implementing data filling logic
+      \item Generating PDF/Excel reports
+    \end{itemize}
+  
+  \item \textbf{Data Visualization}:
+    \begin{itemize}
+      \item Designing visualization components
+      \item Implementing data-to-chart mapping
+      \item Generating interactive charts
+    \end{itemize}
+  
+  \item \textbf{Decision Support Models}:
+    \begin{itemize}
+      \item Implementing prediction models
+      \item Implementing recommendation systems
+      \item Implementing anomaly detection
+    \end{itemize}
+  
+  \item \textbf{Analysis Result Storage}:
+    \begin{itemize}
+      \item Designing analysis result storage structure
+      \item Implementing result storage and retrieval
+      \item Implementing result version management
+    \end{itemize}
+\end{enumerate}
+
+\section{System Integration and Interaction}
+
+\subsection{Inter-component Interaction}
+
+\begin{itemize}
+  \item \textbf{UI Group and System Group}:
+    \begin{itemize}
+      \item Communication through RESTful API
+      \item Data exchange using JSON format
+      \item Implementing WebSocket real-time communication
+    \end{itemize}
+  
+  \item \textbf{System Group and Data Group}:
+    \begin{itemize}
+      \item Database access through JDBC
+      \item Connection pool management for database connections
+      \item Transaction management implementation
+    \end{itemize}
+  
+  \item \textbf{System Group and Analysis Group}:
+    \begin{itemize}
+      \item Calling analysis services through RESTful API
+      \item Asynchronous communication using message queues
+      \item Implementing streaming data processing
+    \end{itemize}
+  
+  \item \textbf{Data Group and Analysis Group}:
+    \begin{itemize}
+      \item Accessing shared data through JDBC
+      \item Implementing data export and import
+    \end{itemize}
+\end{itemize}
+
+\subsection{Data Flow}
+
+\begin{enumerate}
+  \item \textbf{Data Collection Flow}:
+    \begin{itemize}
+      \item Users connect to Bluetooth devices through web pages
+      \item Web pages collect device data
+      \item Data is sent to System Group API via network
+    \end{itemize}
+  
+  \item \textbf{Data Processing Flow}:
+    \begin{itemize}
+      \item System Group receives data and performs initial processing
+      \item Data is stored in Data Group's MySQL database
+      \item Data is forwarded to Analysis Group for streaming analysis
+    \end{itemize}
+  
+  \item \textbf{Analysis Result Flow}:
+    \begin{itemize}
+      \item Analysis Group generates analysis results
+      \item Results are stored in Data Group's MySQL database
+      \item Results are returned to UI Group through System Group API
+      \item UI Group renders analysis results
+    \end{itemize}
+\end{enumerate}
+
+\section{Deployment Architecture}
+
+\subsection{Development Environment}
+
+\begin{itemize}
+  \item \textbf{Development Tools}:
+    \begin{itemize}
+      \item IntelliJ IDEA: Java development
+      \item Visual Studio Code: Frontend development
+      \item Git: Version control
+    \end{itemize}
+  
+  \item \textbf{Development Servers}:
+    \begin{itemize}
+      \item Local development environment
+      \item Development server
+    \end{itemize}
+  
+  \item \textbf{Testing Environment}:
+    \begin{itemize}
+      \item Unit testing: JUnit
+      \item Integration testing: Spring Test
+      \item End-to-end testing: Selenium
+    \end{itemize}
+\end{itemize}
+
+\subsection{Production Environment}
+
+\begin{itemize}
+  \item \textbf{Server Architecture}:
+    \begin{itemize}
+      \item Application server: Deploying System Group and Analysis Group services
+      \item Database server: Deploying MySQL database
+      \item Web server: Deploying frontend application
+    \end{itemize}
+  
+  \item \textbf{Containerized Deployment}:
+    \begin{itemize}
+      \item Docker containers: Encapsulating applications
+      \item Kubernetes: Container orchestration
+    \end{itemize}
+  
+  \item \textbf{High Availability Design}:
+    \begin{itemize}
+      \item Load balancing: Nginx
+      \item Database master-slave replication
+      \item Service redundant deployment
+    \end{itemize}
+  
+  \item \textbf{Monitoring and Operations}:
+    \begin{itemize}
+      \item System monitoring: Prometheus + Grafana
+      \item Log management: ELK Stack
+      \item Alert system: AlertManager
+    \end{itemize}
+\end{itemize}
+
+\section{Risks and Challenges}
+
+\subsection{Technical Risks}
+
+\begin{itemize}
+  \item \textbf{Web Bluetooth API Compatibility}: Different browsers have varying levels of support for Web Bluetooth API
+  \item \textbf{Real-time Data Processing Performance}: Streaming data processing may face performance challenges
+  \item \textbf{Data Security}: Security risks in sensitive data transmission and storage
+  \item \textbf{System Integration Complexity}: Different technology stacks between groups may present integration challenges
+\end{itemize}
+
+\subsection{Mitigation Strategies}
+
+\begin{itemize}
+  \item \textbf{Technology Selection Evaluation}: Thoroughly evaluating the pros and cons of each technical solution
+  \item \textbf{Prototype Validation}: Conducting prototype validation for key functionalities
+  \item \textbf{Incremental Development}: Adopting agile methods to gradually improve functionality
+  \item \textbf{Continuous Integration and Testing}: Establishing comprehensive CI/CD workflows and testing systems
+  \item \textbf{Technical Documentation}: Detailed recording of technical decisions and implementation details
+\end{itemize}
+
+\section{Conclusion}
+
+This document details the technical roadmap for each component of the system, including the UI Group, System Group, Data Group, and Analysis Group. By clearly defining the technical choices and implementation strategies for each group, it provides clear technical guidance for the development team, ensuring technical compatibility and collaboration efficiency between groups.
+
+The system adopts a layered architecture, with components working together through well-defined interfaces. The frontend uses HTML, CSS, and JavaScript to implement the user interface, the backend uses Java and Spring Boot to provide API services, the data layer uses MySQL and JDBC for data storage and access, and the analysis layer uses Java and data processing frameworks to implement data analysis and visualization.
+
+By following the technical roadmap in this document, the project team can efficiently develop and deploy the system to meet user needs and business objectives.
+
+\end{document} 

@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Document Overview}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Document Purpose}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Project Background}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Target Audience}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}System Architecture Overview}{2}{section.2}%
+\contentsline {section}{\numberline {3}UI Group Technical Roadmap}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Frontend Technology Stack}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Frontend Functionality Implementation}{4}{subsection.3.2}%
+\contentsline {section}{\numberline {4}System Group Technical Roadmap}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Backend Technology Stack}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}System Functionality Implementation}{5}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Data Group Technical Roadmap}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Database Technology Stack}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Data Functionality Implementation}{6}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Analysis Group Technical Roadmap}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Analysis Technology Stack}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Analysis Functionality Implementation}{8}{subsection.6.2}%
+\contentsline {section}{\numberline {7}System Integration and Interaction}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Inter-component Interaction}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Data Flow}{9}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Deployment Architecture}{9}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Development Environment}{9}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Production Environment}{10}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Risks and Challenges}{10}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Technical Risks}{10}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Mitigation Strategies}{11}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Conclusion}{11}{section.10}%
