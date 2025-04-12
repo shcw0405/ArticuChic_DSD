@@ -2,7 +2,7 @@
 
 This project is for DSD, 2025 Spring. We are aiming to design an intelligent **Lower Limb Recovery Status Monitoring System** with users from multiple platforms. More information is coming soon after further discussion.
 
-We are the **Android group**.
+We are the **System group**.
 
 There are 6 groups in this project and they are:
 | Group Name | Work | Link |
